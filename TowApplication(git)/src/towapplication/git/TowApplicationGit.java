@@ -33,16 +33,9 @@ public class TowApplicationGit {
             Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/towapplication?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&autoReconnect=true&useSSL=false", "root", "blackbelt1");
             //Create a statement
             Statement myStmt = myConn.createStatement();
-            // Execute SQL query
-            ResultSet myRS = myStmt.executeQuery("select * from customer");
-            //Process result set
-            while (myRS.next()) {
-               System.out.println(myRS.getString("lastName") + ", " + myRS.getString("firstName"));
-            }
-        }
-        catch (Exception exc) {
-            exc.printStackTrace();
-        }
+            
+            
+       
         
         String sfirstName = "";
         String slastName = "";
@@ -90,6 +83,7 @@ public class TowApplicationGit {
             Cust.vehicleDescription = vehicleDesc.getText();
             Cust.currentLocation = currentLoc.getText();
             Cust.desiredLocation = desiredLoc.getText();
+            Cust.phoneNumber = phoneNum.getText();
       
         //Calculates fare
         Cust.fare = Cust.distance * 5;
@@ -110,7 +104,30 @@ public class TowApplicationGit {
             "Order Confirmation", JOptionPane.OK_CANCEL_OPTION);
       
         if (result2 == JOptionPane.OK_OPTION) {
-          // Recipient's email ID needs to be mentioned.
+
+            
+            String sql = "insert into customer" 
+                    + " (firstName, lastName, vehicleDescription, pickupLoc, dropOffLoc, phoneNumber) "
+                    + " values ('"+Cust.firstName+"', '"+Cust.lastName+
+                    "', '"+Cust.vehicleDescription+"', '"+Cust.currentLocation+"', '"
+                    +Cust.desiredLocation+"', '"+Cust.phoneNumber+"')";
+            
+            myStmt.executeUpdate(sql);
+        }    
+            
+          }
+    }
+        catch (Exception exc) {
+            exc.printStackTrace();
+        }   
+            
+            
+            
+       
+            
+            
+            
+        /*  // Recipient's email ID needs to be mentioned.
             String to = "coltonsells3@yahoo.com";
 
         // Sender's email ID needs to be mentioned
@@ -149,9 +166,9 @@ public class TowApplicationGit {
             System.out.println("Sent message successfully....");
         } catch (MessagingException mex) {
             mex.printStackTrace();
+     */ }
       }
-      }
-    }    
-    }
+        
     
-}
+    
+
