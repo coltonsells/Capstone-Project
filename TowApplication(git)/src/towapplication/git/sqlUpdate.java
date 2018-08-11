@@ -15,7 +15,7 @@ public class sqlUpdate {
     
     public static void databaseUpdate(String firstName, String lastName, String vehicleDescription,
             String currentLoc, String desiredLoc, String phoneNum, Statement stmnt) {
-    String sql = "insert into customer" 
+            String sql = "insert into customer" 
                     + " (firstName, lastName, vehicleDescription, pickupLoc, dropOffLoc, phoneNumber) "
                     + " values ('"+firstName+"', '"+lastName+
                     "', '"+vehicleDescription+"', '"+currentLoc+"', '"
@@ -26,5 +26,23 @@ public class sqlUpdate {
         } catch (SQLException ex) {
             Logger.getLogger(sqlUpdate.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public static int loginCheck(String username, String password, Statement stmnt) {
+        int value = 0;
+        String query = "SELECT password FROM employees WHERE username='"+username+"'";
+        try {
+            ResultSet rs = stmnt.executeQuery(query);
+            if (rs.next()){
+                String passwordCheck = rs.getString("password");
+                if (passwordCheck.equals(password)){
+                    value = 1;
+                }
+              
+           }
+        } catch (SQLException ex) {
+            Logger.getLogger(sqlUpdate.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return value;
     }
 }
