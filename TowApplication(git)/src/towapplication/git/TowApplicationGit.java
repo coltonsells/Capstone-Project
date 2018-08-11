@@ -19,6 +19,7 @@ import java.sql.*;
 import javax.activation.*;
 import towapplication.git.ui;
 import towapplication.git.sqlUpdate;
+import towapplication.git.employee;
 //test line
 
 
@@ -35,14 +36,19 @@ public class TowApplicationGit {
             Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/towapplication?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&autoReconnect=true&useSSL=false", "root", "blackbelt1");
             //Create a statement
             Statement myStmt = myConn.createStatement();
+            Statement loginStmt = myConn.createStatement();
             
-             JTextField firstName = new JTextField(10);
+            JTextField firstName = new JTextField(10);
             JTextField lastName = new JTextField(10);
             JTextField vehicleDesc = new JTextField(10);
             JTextField currentLoc = new JTextField(10);
             JTextField desiredLoc = new JTextField(10);
             JTextField phoneNum = new JTextField(10);
             JPanel myPanel = new JPanel();
+            
+            JTextField userName = new JTextField(10);
+            JTextField passWord = new JTextField(10);
+            JPanel employeePanel = new JPanel();
        
             String sfirstName = "";
             String slastName = "";
@@ -63,7 +69,7 @@ public class TowApplicationGit {
                 phoneNum, myPanel);
             
             //Stores customer inputs into Customer class variables
-            int result = JOptionPane.showConfirmDialog(null, myPanel,
+           /* int result = JOptionPane.showConfirmDialog(null, myPanel,
             "Please enter the information below", JOptionPane.OK_CANCEL_OPTION);
             if (result == JOptionPane.OK_OPTION) {
                 Cust.firstName = firstName.getText();
@@ -92,6 +98,16 @@ public class TowApplicationGit {
             
                 }    
             
+            }
+           */ 
+            ui.employeeLoginPrompt(employeePanel, userName, passWord);
+            int login = JOptionPane.showConfirmDialog(null, employeePanel, 
+                    "Enter Login Information", JOptionPane.OK_CANCEL_OPTION);
+            
+            if (login == JOptionPane.OK_OPTION) {
+                employee employeeInfo = new employee(userName.getText(), passWord.getText());
+                int checkVar = sqlUpdate.loginCheck(employeeInfo.username, employeeInfo.password, loginStmt);
+                
             }
         }
         catch (Exception exc) {

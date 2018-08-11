@@ -19,10 +19,6 @@ import javax.swing.JTextField;
 public class ui {
     
     
-       
-    
-    
-    
     public static void createUI (JTextField fName, JTextField lName, JTextField vDesc, JTextField cLoc,
         JTextField dLoc, JTextField pNum, JPanel panel) {
      
@@ -57,5 +53,15 @@ public class ui {
         panel.add(new JLabel("Total Fare: $" + f));
         panel.add(new JLabel("---------"));
         panel.add(new JLabel("If you wish to place your order click OK"));
+    }
+    
+    public static void employeeLoginPrompt(JPanel panel, JTextField uName, JTextField password){
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.setAlignmentX(Component.LEFT_ALIGNMENT);
+        panel.add(new JLabel("Username:"));
+        panel.add(uName);
+        panel.add(new JLabel("Password:"));
+        panel.add(password);
+        
     }
 }
