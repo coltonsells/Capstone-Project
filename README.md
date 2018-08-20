@@ -4,10 +4,7 @@ Welcome to my page<br><br>
 	In this ePortfolio I only included one artifact. The artifact, linked below, contains an application coded in Java built for a tow company and demonstrates several of the concepts I have learned while attending SNHU. The program takes a customer’s information via JPanels and stores the information within objects. The customer inputs their location and where they are going then the application utilizes the Google Maps API to calculate the distance and provide a fare for the customer. This is a demonstration of API integration into a stand-alone application. The object data is also stored into a SQL database (database integration) and the information is sent, via Amazons web service smtp server, in an email to the drivers of the company. Please click the link below to access the source code repository on Github or watch the code review video to see the application in action.<br>
 
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
+<a href="https://github.com/coltonsells/Capstone-Project"> Click here for tow application Github page</a>
 ```markdown
 Syntax highlighted code block
 
