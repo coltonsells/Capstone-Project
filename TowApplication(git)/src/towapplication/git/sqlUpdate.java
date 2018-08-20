@@ -45,4 +45,39 @@ public class sqlUpdate {
         }
         return value;
     }
+    
+    public static int retrieveId(String firstName, String lastName, String vehicleDescription,
+            String currentLoc, String desiredLoc, String phoneNum, Statement stmnt){
+        ResultSet result = null;
+        int answer = 0;
+        String retrieve = "SELECT id FROM customer WHERE firstName = '" + firstName +
+                "' AND lastName = '" + lastName + "' AND vehicleDescription = '" + vehicleDescription +
+                "' AND pickupLoc = '" + currentLoc + "' AND dropOffLoc = '" + desiredLoc +
+                "' AND phoneNumber = '" + phoneNum + "'";
+        
+        try {
+           result = stmnt.executeQuery(retrieve);
+           result.next();
+           answer = result.getInt("id");
+        } catch (SQLException ex) {
+            Logger.getLogger(sqlUpdate.class.getName()).log(Level.SEVERE, null, ex);
+        }    
+        return answer;
+    }
+    
+    
+    public static void updateJobStatus(int idNumber, Connection con){
+        String update = "UPDATE customer "
+                + "SET jobComplete = ? "
+                + "WHERE id = ?";
+        
+        try{
+            PreparedStatement pstmnt = con.prepareStatement(update);
+            pstmnt.setString(1, "YES");
+            pstmnt.setInt(2, idNumber);
+            pstmnt.executeUpdate();
+        } catch (SQLException ex){
+            Logger.getLogger(sqlUpdate.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

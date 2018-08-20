@@ -1,5 +1,5 @@
 package Google;
-
+//This code provided by the University of Washington's CSE 143 Course
 // This class provides two static methods called find and findPlace that
 // provide access to the Google Maps api.  They take a search string and return
 // the latitude and longitude of the top hit for the search (find) along with

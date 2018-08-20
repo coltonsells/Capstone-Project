@@ -1,5 +1,5 @@
 package Google;
-
+//This code provided by the University of Washington's CSE 143 Course
 // This class stores information about a location on Earth.  Locations are
 // specified using latitude and longitude.  The class includes a method for
 // computing the distance between two locations.

@@ -42,7 +42,7 @@ public class ui {
     }
     
     public static void confirmationPrompt(JPanel panel, String fName, String lName,
-    String vDesc, String cLoc, String dLoc, Float f){
+    String vDesc, String cLoc, String dLoc, double f){
 
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         panel.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -63,5 +63,12 @@ public class ui {
         panel.add(new JLabel("Password:"));
         panel.add(password);
         
+    }
+    
+    public static void employeeJobUpdatePrompt(JPanel panel, JTextField job){
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.setAlignmentX(Component.LEFT_ALIGNMENT);
+        panel.add(new JLabel("Input Job ID to be completed"));
+        panel.add(job);
     }
 }

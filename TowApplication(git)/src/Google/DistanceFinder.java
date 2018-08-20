@@ -1,5 +1,5 @@
 package Google;
-
+//This code provided by the University of Washington's CSE 143 Course
 // This class provides a sample usage of the GeoCoder.findPlace method and the
 // PlaceInformation and GeoLocation classes.  It prompts the user for two
 // locations and reports the distance between them.
